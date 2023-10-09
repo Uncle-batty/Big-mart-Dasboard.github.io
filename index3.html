@@ -525,40 +525,37 @@
                     <tr>
                       <th scope="row">A</th>
                       <td>Yes</td>
-                      <td><button class="btn btn-dark">Order</button></td>
-          
+                      <td><button class="btn btn-dark" onclick="orderProduct('A')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">B</th>
                       <td>Yes</td>
-                      <td><button class="btn btn-dark">Order</button></td>
+                      <td><button class="btn btn-dark" onclick="orderProduct('B')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">C</th>
                       <td>Yes</td>
-                      <td><button class="btn btn-dark">Order</button></td>
+                      <td><button class="btn btn-dark" onclick="orderProduct('C')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">D</th>
                       <td>No</td>
-                      <td><button class="btn btn-dark">Order</button></td>
-          
+                      <td><button class="btn btn-dark" onclick="orderProduct('D')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">E</th>
                       <td>No</td>
-                      <td><button class="btn btn-dark">Order</button></td>
+                      <td><button class="btn btn-dark" onclick="orderProduct('E')">Order</button></td>
                     </tr>
-
                     <tr>
                       <th scope="row">F</th>
                       <td>Yes</td>
-                      <td><button class="btn btn-dark">Order</button></td>
+                      <td><button class="btn btn-dark" onclick="orderProduct('F')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">G</th>
                       <td>No</td>
-                      <td><button class="btn btn-dark">Order</button></td>
+                      <td><button class="btn btn-dark" onclick="orderProduct('G')">Order</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -567,6 +564,19 @@
               </div>
             </div>
           </div>
+          
+          <script>
+            function orderProduct(product) {
+              var alertSent = document.querySelector('tbody tr th[data-product="' + product + '"]').nextElementSibling.textContent;
+              if (alertSent === 'Yes') {
+                alert('You have already ordered this product.');
+              } else {
+                alert('You have ordered this product.');
+                document.querySelector('tbody tr th[data-product="' + product + '"]').nextElementSibling.textContent = 'Yes';
+              }
+            }
+          </script>
+
 
           <div class="btn-conteiner">
             <a class="btn-content" href="index4.html">

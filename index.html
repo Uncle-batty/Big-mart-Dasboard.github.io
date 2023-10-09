@@ -28,6 +28,34 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script>
+    const SUPABASE_URL = 'https://tmfgonwvxwcpnjzswwag.supabase.co'
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtZmdvbnd2eHdjcG5qenN3d2FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTYzMjQxMDQsImV4cCI6MjAxMTkwMDEwNH0.JKVTfrXpB6yDO5Wy5Xh6IJn_6aVuaja1hx4VdVzRsWM'
+
+    const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  </script>
+
+<script>
+   async function loadData() {
+      const { data, error } = await _supabase
+        .from('Users')
+        .select()
+
+      if (!error) {
+        //loop display data here
+        const parent = document.getElementById('profile-name')
+
+        let contents = ''
+        
+        contents += '<div> ${data(0).Name}</div>'
+        parent.insertAdjacentHTML('beforeend', contents)
+      }
+
+    }
+  </script>
+ 
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -208,6 +236,7 @@
 
         </li><!-- End Messages Nav -->
 
+
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -217,7 +246,10 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
+              <h6 id="profile-name">Louis batty</h6>
+
+              
+
               <span>Web Designer</span>
             </li>
             <li>
@@ -293,22 +325,24 @@
                       <h6>Filter</h6>
                     </li>
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                    <li><a class="dropdown-item" href="#" id="today">Today</a></li>
+                    <li><a class="dropdown-item" href="#" id="this-month">This Month</a></li>
+                    <li><a class="dropdown-item" href="#" id="this-year">This Year</a></li>
+
                   </ul>
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Visitors <span>| Today</span></h5>
+                  <h5 class="card-title">Visitors <span id="date">| Today</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1059</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6 id="visitors-count">1059</h6>
+                      <span class="text-success small pt-1 fw-bold" id="percentage-increase">12%</span>
+                      <span class="text-muted small pt-2 ps-1" id="increase-label">increase</span>
 
                     </div>
                   </div>
@@ -328,9 +362,10 @@
                       <h6>Filter</h6>
                     </li>
 
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                    <li><a class="dropdown-item" href="#" id="revenue-today">Today</a></li>
+                    <li><a class="dropdown-item" href="#" id="revenue-this-month">This Month</a></li>
+                    <li><a class="dropdown-item" href="#" id="revenue-this-year">This Year</a></li>
+
                   </ul>
                 </div>
 
@@ -343,8 +378,10 @@
                       <i class="bi bi-person"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>121</h6>
-                      <span class="text-success small pt-1 fw-bold">2%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6 id="new-sign-ups-count">121</h6>
+                      <span class="text-success small pt-1 fw-bold" id="percentage-increase-revenue">2%</span>
+                      <span class="text-muted small pt-2 ps-1" id="increase-label-revenue">increase</span>
+
                     </div>
                   </div>
                 </div>
@@ -560,6 +597,7 @@
           
             </div>
           </div><!-- End Website Traffic -->
+          
           <div class="btn-conteiner">
             <a class="btn-content" href="index2.html">
               <span class="btn-title">NEXT</span>
@@ -610,8 +648,10 @@
   <script src="https://cdn.jsdelivr.net/npm/justgage@1.4.0/justgage.min.js"></script>
 
 
+
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+ 
 
 </body>
 

@@ -319,3 +319,50 @@
   }
 
 })();
+
+document.getElementById('today').addEventListener('click', function () {
+  // Update the content with today's data
+  document.getElementById('visitors-count').textContent = '1059';
+  document.getElementById('percentage-increase').textContent = '12%';
+  document.getElementById('increase-label').textContent = 'Increase';
+  document.getElementById('date').textContent = '| Today';
+});
+
+document.getElementById('this-month').addEventListener('click', function () {
+  // Update the content with this month's data
+  document.getElementById('visitors-count').textContent = '26475';
+  document.getElementById('percentage-increase').textContent = '2%';
+  document.getElementById('increase-label').textContent = 'Decrease';
+  document.getElementById('date').textContent = '| Month';
+  document.getElementById('percentage-increase').color = 'red';
+});
+
+document.getElementById('this-year').addEventListener('click', function () {
+  // Update the content with this year's data
+  document.getElementById('visitors-count').textContent = '31770';
+  document.getElementById('percentage-increase').textContent = '17%';
+  document.getElementById('increase-label').textContent = 'Increase';
+  document.getElementById('date').textContent = '| Year';
+});
+
+document.getElementById('revenue-today').addEventListener('click', function () {
+  // Update the content with today's data
+  document.getElementById('new-sign-ups-count').textContent = '121';
+  document.getElementById('percentage-increase-revenue').textContent = '2%';
+  document.getElementById('increase-label-revenue').textContent = 'Increase';
+});
+
+document.getElementById('revenue-this-month').addEventListener('click', function () {
+  // Update the content with this month's data
+  
+  document.getElementById('new-sign-ups-count').textContent = '2030';
+  document.getElementById('percentage-increase-revenue').textContent = '3%';
+  document.getElementById('increase-label-revenue').textContent = 'Increase';
+});
+
+document.getElementById('revenue-this-year').addEventListener('click', function () {
+  // Update the content with this year's data
+  document.getElementById('new-sign-ups-count').textContent = '14560';
+  document.getElementById('percentage-increase-revenue').textContent = '14%';
+  document.getElementById('increase-label-revenue').textContent = 'Increase';
+});
