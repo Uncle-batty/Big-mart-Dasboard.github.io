@@ -25,6 +25,10 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -524,38 +528,38 @@
                   <tbody>
                     <tr>
                       <th scope="row">A</th>
-                      <td>Yes</td>
-                      <td><button class="btn btn-dark" onclick="orderProduct('A')">Order</button></td>
+                      <td id="orderA">Yes</td>
+                      <td><button class="btn btn-dark"  id ="A" onclick="ShowPopUpMsg('A','orderA')" >Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">B</th>
-                      <td>Yes</td>
-                      <td><button class="btn btn-dark" onclick="orderProduct('B')">Order</button></td>
+                      <td id="orderB">Yes</td>
+                      <td><button class="btn btn-dark" ID ="B" onclick="ShowPopUpMsg('B','orderB')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">C</th>
-                      <td>Yes</td>
-                      <td><button class="btn btn-dark" onclick="orderProduct('C')">Order</button></td>
+                      <td id="orderC">Yes</td>
+                      <td><button class="btn btn-dark" ID ="C" onclick="ShowPopUpMsg('C','orderC')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">D</th>
-                      <td>No</td>
-                      <td><button class="btn btn-dark" onclick="orderProduct('D')">Order</button></td>
+                      <td id="orderD">No</td>
+                      <td><button class="btn btn-dark" ID ="D" onclick="ShowPopUpMsg('D','orderD')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">E</th>
-                      <td>No</td>
-                      <td><button class="btn btn-dark" onclick="orderProduct('E')">Order</button></td>
+                      <td id="orderE">No</td>
+                      <td><button class="btn btn-dark" ID ="E" onclick="ShowPopUpMsg('E','orderE')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">F</th>
-                      <td>Yes</td>
-                      <td><button class="btn btn-dark" onclick="orderProduct('F')">Order</button></td>
+                      <td id="orderF">Yes</td>
+                      <td><button class="btn btn-dark" ID ="F" onclick="ShowPopUpMsg('F','orderF')">Order</button></td>
                     </tr>
                     <tr>
                       <th scope="row">G</th>
-                      <td>No</td>
-                      <td><button class="btn btn-dark" onclick="orderProduct('G')">Order</button></td>
+                      <td id="orderG"> No</td>
+                      <td><button class="btn btn-dark" ID ="G" onclick="ShowPopUpMsg('G','orderG')">Order</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -566,15 +570,47 @@
           </div>
           
           <script>
-            function orderProduct(product) {
-              var alertSent = document.querySelector('tbody tr th[data-product="' + product + '"]').nextElementSibling.textContent;
-              if (alertSent === 'Yes') {
-                alert('You have already ordered this product.');
-              } else {
-                alert('You have ordered this product.');
-                document.querySelector('tbody tr th[data-product="' + product + '"]').nextElementSibling.textContent = 'Yes';
+                      function orderProduct(product) {
+          
+                        var alertSent = document.querySelector('tbody tr th[data-product="' + product + '"]').nextElementSibling.textContent;
+                        if (alertSent === 'Yes') {
+                          alert('You have already ordered this product.');
+                        } else {
+                          alert('You have ordered this product.');
+                          document.querySelector('tbody tr th[data-product="' + product + '"]').nblnten              }
+                      }
+                      
+          </script>
+          
+          <script type="text/javascript">
+            // document.getElementById("btnShowModal").addEventListener("click", function () {
+            //   $('#WarningModal').modal('show');
+            // });
+
+
+              function refreshPage() {
+              document.getElementById("btnCloseModal").addEventListener("click", function () {
+                  $('#WarningModal').modal('hide')
+            })
+          }
+              function ShowPopUpMsg(btnID,oderID) {
+                   
+                if (document.getElementById(oderID).innerText=="Yes"){
+                  document.getElementById("DetailedMessage").innerText="Order Already Sent"
+                  document.getElementById(btnID).addEventListener("click", function () {
+                    $('#WarningModal').modal('show');
+                  });
+                }else{
+                  
+                      document.getElementById("DetailedMessage").innerText = " Order Sent"
+                      document.getElementById(btnID).addEventListener("click", function () {
+                      document.getElementById(oderID).innerText = "Yes"
+                    $('#WarningModal').modal('show');
+                  });
+                       
+                }
+    
               }
-            }
           </script>
 
 
@@ -604,6 +640,31 @@
         </div><!-- End Right side columns -->
 
       </div>
+      <!-- PopUp Model  -->
+    <div class="modal fade" id="WarningModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="warningModalTitle">Success</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="warningMessage"></p>
+            <p id="lblMessage"></p>
+            <p id="DetailedMessage"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn button1" id="btnConfirm" onclick=refreshPage() >OK</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     </section>
 
   </main><!-- End #main -->
