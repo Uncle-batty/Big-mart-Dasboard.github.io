@@ -366,3 +366,26 @@ document.getElementById('revenue-this-year').addEventListener('click', function 
   document.getElementById('percentage-increase-revenue').textContent = '14%';
   document.getElementById('increase-label-revenue').textContent = 'Increase';
 });
+
+
+
+var gauge2 = Gauge(
+  document.getElementById("gauge-demo"),
+  {
+    min: 0,
+    max: 50,
+    dialStartAngle: 180,
+    dialEndAngle: 0,
+    value: 19,
+    viewBox: "0 0 100 57",
+    color: function (value) {
+      if (value < 20) {
+        return "#5ee432";
+      } else if (value < 25) {
+        return "#FFD700";
+      } else if (value < 35) {
+        return "#ef4655";
+      } 
+    }
+  }
+);

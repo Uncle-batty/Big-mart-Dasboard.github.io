@@ -1176,3 +1176,31 @@ h6 {
     outline-offset: 0;
   }
 }
+
+ .gauge-container {
+   width: auto;
+   height: auto;
+   display: block;
+   /* float: left; */
+   padding: 6px;
+   overflow: hidden;
+ }
+ .gauge-container.two {
+   height: auto;
+   border: 1px solid rgba(255, 255, 255, 0.1);
+ }
+
+ .gauge-container.two>.gauge>.dial {
+   stroke: #000;
+   stroke-width: 8;
+ }
+
+ .gauge-container.two>.gauge>.value {
+   /*stroke: #FFD700;*/
+   stroke-dasharray: none;
+   stroke-width: 11;
+ }
+
+ .gauge-container.two>.gauge>.value {
+   /*fill: #FFD700;*/
+ }
