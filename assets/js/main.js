@@ -369,23 +369,31 @@ document.getElementById('revenue-this-year').addEventListener('click', function 
 
 
 
-var gauge2 = Gauge(
-  document.getElementById("gauge-demo"),
-  {
-    min: 0,
-    max: 50,
-    dialStartAngle: 180,
-    dialEndAngle: 0,
-    value: 19,
-    viewBox: "0 0 100 57",
-    color: function (value) {
-      if (value < 20) {
-        return "#5ee432";
-      } else if (value < 25) {
-        return "#FFD700";
-      } else if (value < 35) {
-        return "#ef4655";
-      } 
+// Function to generate a random number between min and max (inclusive)
+function getRandomTemperature(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var gauge = Gauge(document.getElementById("gauge-demo"), {
+  min: 0,
+  max: 50,
+  dialStartAngle: 180,
+  dialEndAngle: 0,
+  value: getRandomTemperature(17, 27), // Initialize with a random value
+  viewBox: "0 0 100 57",
+  color: function (value) {
+    if (value < 20) {
+      return "#5ee432";
+    } else if (value < 25) {
+      return "#FFD700";
+    } else if (value < 35) {
+      return "#ef4655";
     }
   }
-);
+});
+
+// Update the gauge with a new random temperature value every 5 seconds
+setInterval(function () {
+  var newTemperature = getRandomTemperature(17, 27);
+  gauge.setValueAnimated(newTemperature, 1); // Update the gauge with animation
+}, 1500); // 5000 milliseconds (5 seconds)
