@@ -1200,3 +1200,52 @@ h6 {
    stroke-width: 11;
  }
 
+@media (max-width: 768px) {
+  .navbar-nav .nav-item {
+    white-space: nowrap;
+    padding-top: 10px;
+  }
+
+  .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    
+  }
+
+  .navbar-nav .nav-item.dropdown:hover .dropdown-menu.show {
+    max-height: calc(100vh - 56px);
+    /* Adjust as needed */
+    overflow-y: auto;
+  }
+}
+
+
+.house-container {
+  text-align: center;
+  position: relative;
+}
+
+.house-icon {
+  font-size: 60px;
+  color: #3498db;
+  /* Set the default color */
+  display: inline-block;
+}
+
+.capacity {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.max-capacity {
+  font-size: 14px;
+  color: #999;
+  display: none;
+}
+
+.house-container:hover .max-capacity {
+  display: block;
+}
+.house-container:hover .house-fill {
+  fill: #ccc;
+  /* Fill color on hover */
+}

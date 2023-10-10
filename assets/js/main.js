@@ -397,3 +397,42 @@ setInterval(function () {
   var newTemperature = getRandomTemperature(17, 27);
   gauge.setValueAnimated(newTemperature, 1); // Update the gauge with animation
 }, 1500); // 5000 milliseconds (5 seconds)
+
+
+// Function to generate a random packet loss percentage between min and max
+function getRandomPacketLoss(min, max) {
+  return (Math.random() * (max - min) + min).toFixed(2);
+}
+
+// Function to update the packet loss percentage and its color
+function updatePacketLoss() {
+  var packetLossElement = document.getElementById("packet-loss");
+  var newPacketLoss = getRandomPacketLoss(0.24, 0.91);
+  packetLossElement.textContent = newPacketLoss + "%";
+
+  // Set the text color based on the packet loss percentage value
+  if (newPacketLoss < 0.5) {
+    packetLossElement.style.color = "green";
+  } else if (newPacketLoss < 0.8) {
+    packetLossElement.style.color = "yellow";
+  } else {
+    packetLossElement.style.color = "red";
+  }
+}
+
+// Update the packet loss percentage and its color every 1 second
+setInterval(updatePacketLoss, 1000); // 1000 milliseconds (1 second)
+
+
+// Replace this with your actual capacity value
+const currentCapacity = 60; // Example: 60%
+const maxCapacity = 100; // Example: 100
+
+const capacityElement = document.querySelector('.capacity');
+
+capacityElement.textContent = currentCapacity + '%'; // Set the capacity text
+
+
+
+
+
