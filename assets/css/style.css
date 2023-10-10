@@ -1249,3 +1249,60 @@ h6 {
   fill: #ccc;
   /* Fill color on hover */
 }
+
+.notification-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styles for the notification sections */
+.notification-section {
+  margin-bottom: 30px;
+}
+
+.notification-section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Styles for individual notifications */
+.notification {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.notification h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.notification p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.notification .time {
+  color: #777;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.notification-link {
+  display: inline-block;
+  background-color: #4154f1;
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.notification-link:hover {
+  background-color: #7288e8;
+}
