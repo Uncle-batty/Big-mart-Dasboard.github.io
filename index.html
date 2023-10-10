@@ -241,7 +241,7 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <a href="index3.html"><h6 id="visitors-count">1059</h6></a>
+                      <a href="Visitors.html"><h6 id="visitors-count">1059</h6></a>
                       <span class="text-success small pt-1 fw-bold" id="percentage-increase">12%</span>
                       <span class="text-muted small pt-2 ps-1" id="increase-label">increase</span>
 
@@ -509,10 +509,16 @@
                     // Perform navigation based on the clicked segment
                     switch (clickedSegment) {
                       case 'Search Engine':
-                        window.location.href = 'index2.html';
+                        window.location.href = 'traffic.html?segment=searchEngine';
                         break;
                       case 'Direct':
-                        window.location.href = 'direct_traffic_page.html';
+                        window.location.href = 'traffic.html?segment=direct';
+                        break;
+                      case 'Email':
+                        window.location.href = 'traffic.html?segment=email'
+                        break;
+                      case 'Video Ads':
+                        window.location.href = 'traffic.html?segment=videoAds'
                         break;
                       // Add more cases for other segments as needed
                       default:
