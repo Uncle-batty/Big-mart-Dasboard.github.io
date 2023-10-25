@@ -254,7 +254,7 @@
  
 </div><!-- End Reports -->
 <H2>Customer satifaction</H2>
-<!--Pie chart for Customer Satisfaction-->
+<!-- Pie Chart for Customer Satisfaction -->
 <div class="col-lg-6">
   <div class="card">
     <div class="card-body">
@@ -264,80 +264,14 @@
       <canvas id="pieChart" style="max-height: 400px;"></canvas>
       <script>
         document.addEventListener("DOMContentLoaded", () => {
-          new Chart(document.querySelector('#pieChart'), {
+          const pieChart = new Chart(document.querySelector('#pieChart'), {
             type: 'pie',
             data: {
-              labels: [
-                'Very Positive',
-                'Positive',
-                'Neutral',
-                'Negative',
-                'Very Negative'
-              ],
+              labels: ['Positive', 'Neutral', 'Negative'],
               datasets: [{
                 label: 'Customer Satisfaction',
-                data: [30, 45, 15, 7, 3],
-                backgroundColor: [
-                  '#98e5b2',
-                  '#4154f1',
-                  '#7288e8',
-                  '#e0f8e9',
-                  '#c0cffc',
-                ],
-                hoverOffset: 8 // Increase the hover offset to provide space for displaying percentage
-              }]
-            },
-            options: {
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    label: function (context) {
-                      var label = context.label || '';
-                      var value = context.raw || '';
-                      return label + ': ' + value + '%';
-                    }
-                  }
-                }
-              }
-            }
-          });
-        });
-      </script>
-      <!-- End Pie Chart -->
-
-    </div>
-  </div>
-</div>
-
-<div class="col-lg-6">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Overall customer staisfaction</h5>
-
-      <!-- Doughnut Chart -->
-      <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          new Chart(document.querySelector('#doughnutChart'), {
-            type: 'doughnut',
-            data: {
-              labels: [
-                '2017',
-                '2018',
-                '2019',
-                '2021',
-                '2022',
-              ],
-              datasets: [{
-                label: 'Overall Customer Satistaction',
-                data: [50, 60, 70, 80, 79],
-                backgroundColor: [
-                  '#c0cffc',
-                  '#ffe05f',
-                  '#98e5b2',
-                  '#fff8d4',
-                  '#e0f8e9',
-                ],
+                data: [55, 30, 15],
+                backgroundColor: ['#98e5b2', '#e0f8e9', '#7288e8'],
                 hoverOffset: 8
               }]
             },
@@ -354,11 +288,96 @@
                 }
               }
             }
-
           });
+
+          const wordCloudImage = document.getElementById("wordCloudImage");
+
+          // Add a click event listener to the pie chart
+          pieChart.options.onClick = (event, chartElements) => {
+            if (chartElements.length > 0) {
+              // Determine which section was clicked
+              const clickedSection = chartElements[0];
+              // Determine the index of the clicked section
+              const index = clickedSection.index;
+
+              // Update the image source based on the clicked section
+              if (index === 0) {
+                wordCloudImage.src = 'assets/img/Posc (1).png';
+              } else if (index === 1) {
+                wordCloudImage.src = 'assets/img/Nut.png';
+              } else if (index === 2) {
+                wordCloudImage.src = 'assets/img/neg.png';
+                
+              }
+            }
+          };
         });
       </script>
-      <!-- End Doughnut CHart -->
+    </div>
+  </div>
+</div>
+
+
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Overall customer staisfaction</h5>
+
+    <!-- Bar Chart -->
+    <canvas id="barChart1" style="max-height: 400px;"></canvas>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new Chart(document.querySelector('#barChart1'), {
+          type: 'bar', // Use 'bar' chart type
+          data: {
+            labels: [
+              '2017',
+              '2018',
+              '2019',
+              '2021',
+              '2022',
+            ],
+            datasets: [{
+              label: 'Overall Customer Satisfaction',
+              data: [50, 60, 70, 80, 79],
+              backgroundColor: [
+                '#c0cffc',
+                '#ffe05f',
+                '#98e5b2',
+                '#fff8d4',
+                '#e0f8e9',
+              ],
+            }]
+          },
+          options: {
+            scales: {
+              x: {
+                beginAtZero: true,
+              },
+              y: {
+                beginAtZero: true,
+                suggestedMax: 100, // Customize the scale as needed
+              },
+            },
+            plugins: {
+              legend: {
+                display: false, // Hide the legend
+              },
+              title: {
+                display: true,
+                text: 'Overall Customer Satisfaction', // Chart title
+                fontSize: 16,
+              },
+              responsive: true,
+              aspectRatio: 1.5, // Adjust the aspect ratio as needed
+            },
+          },
+        });
+      });
+    </script>
+    <!-- End Bar Chart -->
+
+
 
     </div>
   </div>
@@ -437,12 +456,13 @@
           
           </div>
         <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Customer word cloud</h5>
-              <img src="assets\img\wordcloud.png" style="width: 100%;height: auto;">
-            </div>
+        <div class="card"> 
+          <div class="card-body">
+            <h5 class="card-title">Customer word cloud</h5>
+            <img id="wordCloudImage" src="assets\img\word-cloud.png" style="width: 100%; height: auto;">
           </div>
+        </div>
+
           <div class="card">
             <div class="card-body">
               <img src="assets\img\pos.png" style="width: 100%;height: auto;">
