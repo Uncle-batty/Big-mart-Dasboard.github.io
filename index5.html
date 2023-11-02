@@ -36,6 +36,24 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .credit-item {
+      background-color: #f4f4f4;
+      padding: 20px;
+      margin: 10px;
+      border: 1px solid #ddd;
+    }
+  
+    .credit-item img {
+      max-width: 100%;
+    }
+
+    .credit-item img {
+      max-width: 100%;
+      height: auto;
+      width: 100%; /* Set the width to create a square */
+    }
+    </style>
 </head>
 
 <body>
@@ -80,7 +98,7 @@
               <a class="nav-link" href="index4.html">Supply chain</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index5.html">History</a>
+              <a class="nav-link" href="index5.html">Credit</a>
             </li>
   
           </ul>
@@ -173,139 +191,63 @@
 
   
 
-  <main id="main" class="main">
-
-   
-
-    <section class="section dashboard">
+<main id="main" class="main">
+  <section class="section dashboard">
+    <div class="container">
       <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-8">
-          <div class="row">
-
-            <h2>Historical performance</h2>
-<div class="col-lg-8">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Growth for our years of runing</h5>
-
-      <!-- Line Chart -->
-      <canvas id="lineChart" style="max-height: 400px;"></canvas>
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          new Chart(document.querySelector('#lineChart'), {
-            type: 'line',
-            data: {
-              labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
-              datasets: [{
-                label: '% growth',
-                data: [5, 20, 30, -10, 25, 15],
-                fill: false,
-                borderColor: '#4154f1',
-                tension: 0.1
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-        });
-      </script>
-      <!-- End Line CHart -->
-
-    </div>
-  </div>
-</div>
-
-
-<div class="col-lg-4">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Overall customer staisfaction</h5>
-
-      <!-- Doughnut Chart -->
-      <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          new Chart(document.querySelector('#doughnutChart'), {
-            type: 'doughnut',
-            data: {
-              labels: [
-                '2017',
-                '2018',
-                '2019',
-                '2021',
-                '2022',
-              ],
-              datasets: [{
-                label: 'My First Dataset',
-                data: [50,60,70,80,79],
-                backgroundColor: [
-                  '#c0cffc',
-                  '#ffe05f',
-                  '#98e5b2',
-                  '#fff8d4',
-                  '#e0f8e9',
-                ],
-                hoverOffset: 4
-              }]
-            }
-          });
-        });
-      </script>
-      <!-- End Doughnut CHart -->
-
-    </div>
-  </div>
-</div>
-
-
-
-
+        <div class="col-md-4">
+          <div class="credit-item text-center">
+            <img src="assets/img/Louis.jpg" alt="Person 1">
+            <h3>Louis Batty</h3>
+            <p>lead developer</p>
           </div>
-        </div><!-- End Left side columns -->
+        </div>
 
-        <!-- Right side columns -->
-        <div class="col-lg-4">
+        <div class="col-md-4">
+          <div class="credit-item text-center">
+            <img src="assets/img/Ayush.jpg" alt="Person 2">
+            <h3>Ayush Bhadra</h3>
+            <p>Junior developer</p>
+          </div>
+        </div>
 
-          
-        </br>
-        </br>
-          <!-- Budget Report -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-
-              <img src="assets\img\map.jpg" style="width: 100%; height: auto;">
-
-            </div>
-          </div><!-- End Budget Report -->
-       
-
-        </div><!-- End Right side columns -->
-
+        <div class="col-md-4">
+          <div class="credit-item text-center">
+            <img src="assets/img/jose.jpg" alt="Person 3">
+            <h3>Jose hyman</h3>
+            <p>At the track</p>
+          </div>
+        </div>
       </div>
-    </section>
 
-  </main><!-- End #main -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="credit-item text-center">
+            <img src="assets/img/Tadi.jpg" alt="Person 4">
+            <h3>Tadiwanasha Chingwa</h3>
+            <p>Just there for vibes</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="credit-item text-center">
+            <img src="assets/img/edwin.jpg" alt="Person 5">
+            <h3>Edwin Malgi</h3>
+            <p>One Chart Guy</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="credit-item text-center">
+            <img src="assets/img/Papudi.jpg" alt="Person 6">
+            <h3>Rupudi Hulchudie</h3>
+            <p>APK Guy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
   
 
@@ -320,6 +262,12 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
+
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

@@ -436,3 +436,8 @@ capacityElement.textContent = currentCapacity + '%'; // Set the capacity text
 
 
 
+
+
+
+
+
