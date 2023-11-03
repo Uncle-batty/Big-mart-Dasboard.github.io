@@ -38,6 +38,14 @@
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
     <style>
@@ -201,9 +209,10 @@
       <section class="section dashboard">
         <div class="row">
           <!-- Left side columns -->
-          <div class="col-lg-8">8500
+          <div class="col-lg-8">
+            
             <div class="row">
-              <h2>Wearhouse operations & Invantory managmnet</h2>
+              <h2>Wearhouse operations & Inventory managmnet</h2>
               <div class="col-lg-6">
                 <div class="card">
                   <div class="card-body">
@@ -282,26 +291,31 @@
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title">Inventory Levels</h5>
-                
+
                     <!-- Table with stripped rows -->
                     <div class="container mt-4">
                       <div class="input-group">
-                        <label for="warehouseDropdown" class="input-group-prepend">
+                        <label
+                          for="warehouseDropdown"
+                          class="input-group-prepend"
+                        >
                           <span class="input-group-text">
                             <i class="fas fa-caret-down"></i>
                           </span>
                         </label>
                         <select class="custom-select" id="warehouseDropdown">
-                          <option id="fibdeckOption" value="A" selected >FibDeck Warehouse</option>
+                          <option id="fibdeckOption" value="A" selected>
+                            FibDeck Warehouse
+                          </option>
                           <option value="B">SuckDen Warehouse</option>
                           <option value="C">BakeKim Warehouse</option>
-                          <option value="D"  >SixGunSmoke</option>
+                          <option value="D">SixGunSmoke</option>
                           <option value="E">AnaDeck Warehouse</option>
                         </select>
                       </div>
                     </div>
-                    <div id="selectedWarehouse" class="mt-4" ></div>
-                
+                    <div id="selectedWarehouse" class="mt-4"></div>
+
                     <!-- Container for the inventory charts -->
                     <div id="inventoryCharts" class="mt-4"></div>
                   </div>
@@ -309,7 +323,6 @@
               </div>
               <!--Script for Inverntory warehouse -->
               <script>
-             
                 function orderProduct(product) {
                   var alertSent = document.querySelector(
                     'tbody tr th[data-product="' + product + '"]'
@@ -323,89 +336,105 @@
                     ).nextElementSibling.textContent = "Yes";
                   }
                 }
-                   
 
                 // Sample inventory data for each warehouse
                 const warehouseData = {
-                    A: { currentInventory: 7500, maxLevel: 10625 },
-                    B: { currentInventory: 6200, maxLevel: 9560 },
-                    C: { currentInventory: 12000, maxLevel: 13200 },
-                    D: { currentInventory: 6500, maxLevel: 12350 },
-                    E: { currentInventory: 10000, maxLevel: 12400 }
-                  };
+                  A: { currentInventory: 7500, maxLevel: 10625 },
+                  B: { currentInventory: 6200, maxLevel: 9560 },
+                  C: { currentInventory: 12000, maxLevel: 13200 },
+                  D: { currentInventory: 6500, maxLevel: 12350 },
+                  E: { currentInventory: 10000, maxLevel: 12400 },
+                };
 
-                  // Get references to the dropdown and selectedWarehouse elements
-                  const warehouseDropdown = document.getElementById('warehouseDropdown');
-                  const selectedWarehouse = document.getElementById('selectedWarehouse');
-                  const inventoryCharts = document.getElementById('inventoryCharts');
+                // Get references to the dropdown and selectedWarehouse elements
+                const warehouseDropdown =
+                  document.getElementById("warehouseDropdown");
+                const selectedWarehouse =
+                  document.getElementById("selectedWarehouse");
+                const inventoryCharts =
+                  document.getElementById("inventoryCharts");
 
-                  // Function to create and update a chart for the selected warehouse
-                  function createAndUpdateChart(warehouse) {
-                    const data = warehouseData[warehouse];
-                    if (data) {
-                      const { currentInventory, maxLevel } = data;
+                // Function to create and update a chart for the selected warehouse
+                function createAndUpdateChart(warehouse) {
+                  const data = warehouseData[warehouse];
+                  if (data) {
+                    const { currentInventory, maxLevel } = data;
 
-                      // Update the selectedWarehouse element with the selected warehouse name
-                      selectedWarehouse.textContent = `Selected Warehouse: ${currentInventory} units`;
+                    // Update the selectedWarehouse element with the selected warehouse name
+                    selectedWarehouse.textContent = `Selected Warehouse: ${currentInventory} units`;
 
-                      // Clear the existing chart by removing it from the DOM
-                      inventoryCharts.innerHTML = '';
+                    // Clear the existing chart by removing it from the DOM
+                    inventoryCharts.innerHTML = "";
 
-                      // Create a new chart
-                      const chartCanvas = document.createElement('canvas');
-                      chartCanvas.width = 400;
-                      chartCanvas.height = 200;
-                      inventoryCharts.appendChild(chartCanvas);
+                    // Create a new chart
+                    const chartCanvas = document.createElement("canvas");
+                    chartCanvas.width = 400;
+                    chartCanvas.height = 200;
+                    inventoryCharts.appendChild(chartCanvas);
 
-                      const chartContext = chartCanvas.getContext('2d');
+                    const chartContext = chartCanvas.getContext("2d");
 
-                      const chart = new Chart(chartContext, {
-                        type: 'bar',
-                        data: {
-                          labels: ['Current Inventory', 'Max Level'],
-                          datasets: [{
-                            label: 'Inventory Levels',
+                    const chart = new Chart(chartContext, {
+                      type: "bar",
+                      data: {
+                        labels: ["Current Inventory", "Max Level"],
+                        datasets: [
+                          {
+                            label: "Inventory Levels",
                             data: [currentInventory, maxLevel],
                             backgroundColor: [
-                              'rgba(75, 192, 192, 0.2)',
-                              'rgba(255, 99, 132, 0.2)'
+                              "rgba(75, 192, 192, 0.2)",
+                              "rgba(255, 99, 132, 0.2)",
                             ],
+                            
                             borderColor: [
-                              'rgba(75, 192, 192, 1)',
-                              'rgba(255, 99, 132, 1)'
+                              "rgba(75, 192, 192, 1)",
+                              "rgba(255, 99, 132, 1)",
                             ],
-                            borderWidth: 1
-                          }]
-                        },
-                        options: {
-                          scales: {
-                            y: {
-                              beginAtZero: true,
-                              max: maxLevel + 1000 // Adjust the maximum value for better visualization
-                            }
+                            borderWidth: 1,
+                          },
+                          {
+                            label :"Max Level ",
+                              backgroundColor: [
+                              "rgba(75, 192, 192, 0.2)",
+                              "rgba(255, 99, 132, 0.2)",
+                            ],
+                            borderWidth:1,
                           }
-                        }
-                      });
-                    }
+                          
+                        ],
+                      },
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true,
+                            max: maxLevel + 1000, // Adjust the maximum value for better visualization
+                          },
+                        },
+                      },
+                    });
                   }
+                }
 
-                  warehouseDropdown.addEventListener('change', function () {
-                    const selectedOption = warehouseDropdown.options[warehouseDropdown.selectedIndex];
-                    const selectedWarehouseValue = selectedOption.value;
-                    createAndUpdateChart(selectedWarehouseValue);
-                  });
+                warehouseDropdown.addEventListener("change", function () {
+                  const selectedOption =
+                    warehouseDropdown.options[warehouseDropdown.selectedIndex];
+                  const selectedWarehouseValue = selectedOption.value;
+                  createAndUpdateChart(selectedWarehouseValue);
+                });
 
-                  function initializeChart() {
-                    const fibdeckOption = document.getElementById('fibdeckOption');
-                    if (fibdeckOption) {
-                      fibdeckOption.selected = true;
-                      createAndUpdateChart(fibdeckOption.value);
-                      console.log("Log Chart")
-                    }
+                function initializeChart() {
+                  const fibdeckOption =
+                    document.getElementById("fibdeckOption");
+                  if (fibdeckOption) {
+                    fibdeckOption.selected = true;
+                    createAndUpdateChart(fibdeckOption.value);
+                    console.log("Log Chart");
                   }
+                }
 
-                  // Trigger the chart initialization during the first page load
-                  initializeChart();
+                // Trigger the chart initialization during the first page load
+                initializeChart();
               </script>
 
               <!--StockLead Time -->
@@ -418,15 +447,14 @@
 
                     <!-- Bubble Chart -->
                     <div
-                      id="bubbleChart"
+                      id="areaChart"
                       style="min-height: 400px"
                       class="echart"
                     ></div>
 
                     <script>
                       document.addEventListener("DOMContentLoaded", () => {
-                        const data = [
-                          [
+                          const data = [
                             [100, 900, 17096869, "Product 1", 1990],
                             [200, 800, 27662440, "Product 2", 1990],
                             [50, 1000, 1154605773, "Product 3", 1990],
@@ -434,61 +462,80 @@
                             [400, 100, 4986705, "Product 5", 1990],
                             [150, 350, 56943299, "Product 6", 1990],
                             [350, 450, 78958237, "Product 7", 1990],
-                          ],
-                        ];
-                        echarts
-                          .init(document.querySelector("#bubbleChart"))
-                          .setOption({
+                          ];
+
+                          // Assuming you have a div with the id "areaChart" to render the area chart.
+                          const areaChart = echarts.init(document.querySelector("#areaChart"));
+
+                          const xAxisData = data.map(item => item[3]);
+                          const unitsAvailableData = data.map(item => item[0]);
+                          const unitsSoldData = data.map(item => item[1]);
+
+                          areaChart.setOption({
                             legend: {
-                              right: "10%",
+                              data: ["Units Available", "Units Sold"],
                               top: "3%",
                             },
                             grid: {
                               left: "8%",
                               top: "10%",
+                              right: "10%", // Adjust the right margin as needed.
                             },
                             xAxis: {
-                              name: "Units Available",
-                              splitLine: {
-                                lineStyle: {
-                                  type: "dashed",
-                                },
-                              },
+                              type: "category",
+                              data: xAxisData,
+                              name: "Product Name",
                             },
                             yAxis: {
-                              name: "Units Sold",
-                              splitLine: {
-                                lineStyle: {
-                                  type: "dashed",
-                                },
-                              },
-                              scale: true,
+                              name: "Units",
                             },
                             series: [
                               {
-                                name: "Product Name",
-                                data: data[0],
-                                type: "scatter",
-                                symbolSize: function (data) {
-                                  return Math.sqrt(data[2]) / 5e2;
-                                },
-                                emphasis: {
-                                  focus: "series",
-                                  label: {
-                                    show: true,
-                                    formatter: function (param) {
-                                      return param.data[3];
-                                    },
-                                    position: "top",
-                                  },
-                                },
-                                itemStyle: {
-                                  color: "#2eca6a",
-                                },
+                                name: "Units Available",
+                                data: unitsAvailableData,
+                                type: "line",
+                                areaStyle: { color: "#e0f8e9" },
+                              },
+                              {
+                                name: "Units Sold",
+                                data: unitsSoldData,
+                                type: "line",
+                                areaStyle: { color: "#fff8d4" },
+                                
                               },
                             ],
                           });
+                        });
+
+
+                   function refreshPage() {
+                      // Add a click event listener to the "OK" button within the modal
+                      document.getElementById("btnConfirm").addEventListener("click", function () {
+                        $("#WarningModal").modal("hide");
                       });
+                    }
+                      function ShowPopUpMsg(btnID, oderID) {
+                        if (
+                          document.getElementById(oderID).innerText == "Yes"
+                        ) {
+                          document.getElementById("DetailedMessage").innerText =
+                            "Order Already Sent";
+                          document
+                            .getElementById(btnID)
+                            .addEventListener("click", function () {
+                              $("#WarningModal").modal("show");
+                            });
+                        } else {
+                          document.getElementById("DetailedMessage").innerText =
+                            " Order Sent";
+                          document
+                            .getElementById(btnID)
+                            .addEventListener("click", function () {
+                              document.getElementById(oderID).innerText = "Yes";
+                              $("#WarningModal").modal("show");
+                            });
+                        }
+                      }
                     </script>
                     <!-- End Bubble Chart -->
                   </div>
@@ -517,11 +564,12 @@
                     <tbody>
                       <tr>
                         <th scope="row">A</th>
-                        <td>Yes</td>
+                        <td id="orderA">Yes</td>
                         <td>
                           <button
                             class="btn btn-dark"
-                            onclick="orderProduct('A')"
+                            id="A"
+                            onclick="ShowPopUpMsg('A','orderA')"
                           >
                             Order
                           </button>
@@ -529,11 +577,12 @@
                       </tr>
                       <tr>
                         <th scope="row">B</th>
-                        <td>Yes</td>
+                        <td id="orderB">Yes</td>
                         <td>
                           <button
                             class="btn btn-dark"
-                            onclick="orderProduct('B')"
+                            id="B"
+                            onclick="ShowPopUpMsg('B','orderB')"
                           >
                             Order
                           </button>
@@ -541,11 +590,12 @@
                       </tr>
                       <tr>
                         <th scope="row">C</th>
-                        <td>Yes</td>
+                        <td id="orderC">Yes</td>
                         <td>
                           <button
                             class="btn btn-dark"
-                            onclick="orderProduct('C')"
+                            id="C"
+                            onclick="ShowPopUpMsg('C','orderC')"
                           >
                             Order
                           </button>
@@ -553,11 +603,12 @@
                       </tr>
                       <tr>
                         <th scope="row">D</th>
-                        <td>No</td>
+                        <td id="orderD">No</td>
                         <td>
                           <button
                             class="btn btn-dark"
-                            onclick="orderProduct('D')"
+                            id="D"
+                            onclick="ShowPopUpMsg('D','orderD')"
                           >
                             Order
                           </button>
@@ -565,11 +616,12 @@
                       </tr>
                       <tr>
                         <th scope="row">E</th>
-                        <td>No</td>
+                        <td id="orderE">No</td>
                         <td>
                           <button
                             class="btn btn-dark"
-                            onclick="orderProduct('E')"
+                            id="E"
+                            onclick="ShowPopUpMsg('E','orderE')"
                           >
                             Order
                           </button>
@@ -577,11 +629,12 @@
                       </tr>
                       <tr>
                         <th scope="row">F</th>
-                        <td>Yes</td>
+                        <td id="orderF">Yes</td>
                         <td>
                           <button
                             class="btn btn-dark"
-                            onclick="orderProduct('F')"
+                            id="F"
+                            onclick="ShowPopUpMsg('F','orderF')"
                           >
                             Order
                           </button>
@@ -589,11 +642,12 @@
                       </tr>
                       <tr>
                         <th scope="row">G</th>
-                        <td>No</td>
+                        <td id="orderG">No</td>
                         <td>
                           <button
                             class="btn btn-dark"
-                            onclick="orderProduct('G')"
+                            id="G"
+                            onclick="ShowPopUpMsg('G','orderG')"
                           >
                             Order
                           </button>
@@ -602,7 +656,7 @@
                     </tbody>
                   </table>
                   <!-- End Table with stripped rows -->
-                  Selected Warehouse
+                 
                 </div>
               </div>
             </div>
@@ -649,6 +703,53 @@
           </div>
           <!-- End Right side columns -->
         </div>
+        <div
+          class="modal fade"
+          id="WarningModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="errorModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="warningModalTitle">Success</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p id="warningMessage"></p>
+                <p id="lblMessage"></p>
+                <p id="DetailedMessage"></p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn button1"
+                  id="btnConfirm"
+                  onclick="refreshPage()"
+                >
+                  OK
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                  id="btnCancel"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <!-- End #main -->
@@ -668,7 +769,7 @@
     <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
   </body>
